@@ -1,12 +1,12 @@
 import './App.scss';
 import ContactUS from './components/ContactUS';
 
-const user = {
-  firstName: 'Rahul',
-  lastName: 'Kumar',
-  city: 'Gururgam',
-  phone: 943434343,
-  status: 'loading'
+const person = {
+  firstName: 'Ashish',
+  lastName: 'Punia',
+  city: 'Chandigarh',
+  phone: 749006788,
+  status: 'Active'
 }
 
 const users = [
@@ -48,38 +48,41 @@ function App() {
   const colors = ['RED', 'BLUE', 'GREEN'];
 
   const getContent = () => {
-    return <p>hi {user.firstName}, JSX syntax and its similarity to HTML/XML.</p>
+    return <p>Hi {person.firstName}, REACT IS EASY FOR YOU.</p>
   }
 
-  const getUserPhone = (userData: any = undefined) => {
-    return userData?.phone ? `+91 ${userData.phone}` : 'phone number is not avaiable'
+  const getPersonPhone = (userData: any = undefined) => {
+    return person?.phone ? `+91 ${person.phone}` : 'phone number is not avaiable'
   }
 
   return (
-    <div className="App">
-      <p>This is our first react app</p>
-      {1 + 2 + 3}
+   <div className= "App">
+      <p> Yeh hai hamaara pehla React App</p>
+      {3+6+9}
       <hr />
-      <span>Selected Color: {colors[1]}</span>
+      <span> Selected Color: {colors[0]} </span>
+     
       {getContent()}
 
       {
-        user.city ? `Address : ${user.city}` : 'Address not avaiable'
+        person.city ? `Kahaan Rehta Haai : ${person.city}` : 'Address not avaiable'
       }
 
       <hr />
       {
-        getUserPhone()
+        getPersonPhone()
       }
       <hr />
       {
-        user.phone ? <p id="text" className='text'>You have phone number. You can subscribe us.</p> : <p>SOrry you dont have phone</p>
+        person.phone ? <p id="text" className='text'>You have phone number. You can subscribe us.</p> : <p>SOrry you dont have phone</p>
       }
+
       {
-        renderContent(user.status)
+        renderContent(person.status)
       }
       {
         new Date().toLocaleTimeString()
+
       }
       {
         Math.random()
@@ -101,23 +104,42 @@ function App() {
       } */}
 
       {
-        colors.map((color, index) => <p key={color}>{index + 1}. {color}</p>)
-      }
+        colors.map((color, index) => { 
+          return <p key={color}> {index + 1}. {color}</p>    
+      })
+    }
 
+       
+         
       <ul>
+       
         {
           colors.map(color => {
             return <li key={color}>{color}</li>
           })
         }
+      
       </ul>
 
       <ul>
+       
         {data.map((item) => (
           <li key={item}>{item} - {item % 2 === 0 ? 'Even' : 'Odd'}</li>
         ))}
+      
       </ul>
-      {/* <header className="App-header">
+
+      <ul>
+      
+        {
+          data.map((item) => (
+            <li key={item}>{item}</li>
+          ))
+        }
+      
+      </ul>
+     
+     {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
