@@ -1,12 +1,15 @@
- const ContactUS = (props:any) => {
-  return (
-    <div style={{border:'1px solid green'}}>
-      <p>{props.user.firstName} {props.user.lastname}</p>
-    
-      <p>{props.user.phone ? props.user.phone : 'Sorry your phone does not exist'}</p>   
-    
-    </div>
-  )
- }
+import styles from './ContactUS.module.scss'
+const ContactUs = () => {
+    return (
+        <>
+            <div>ContactUs</div>
+            <p className={styles.AppPTAG}>This is a p tag of color defined in scss module</p>
+        </>
+    )
+}
 
-export default ContactUS
+export default ContactUs
+
+ 
+
+  
