@@ -1,15 +1,17 @@
-import styles from './ContactUS.module.scss'
-const ContactUs = () => {
+
+import React from 'react'
+
+const Contactus = () => {
     return (
-        <>
-            <div>ContactUs</div>
-            <p className={styles.AppPTAG}>This is a p tag of color defined in scss module</p>
-        </>
+        <React.Fragment>
+            <div>Hammne Contact karr</div>
+        </React.Fragment>
     )
 }
 
-export default ContactUs
+export default Contactus
+
+
+
 
  
-
-  
