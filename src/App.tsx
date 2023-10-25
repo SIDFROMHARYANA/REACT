@@ -1,37 +1,38 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { useReducer } from 'react';
 import './App.css';
-import { count } from 'console';
 
 
-
-function App() {
-  const [count, setCount] = useState(0);
+const counterReducer1 = (state: any, action: any) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    case 'RESET':
+      return { count: 0 };
+    default:
+      return state;
+  }
+}
 
  
 
-  // useEffect(() => {
-  //   document.title = `Count: ${count}`;
-  // }, [count])
-
-  useLayoutEffect(() => {
-    // This code runs synchronously after every render and before the browser paints the screen.
-    document.title = `Count: ${count}`;
-  }, [count])
-
-
-  const incrementBadhaao = () => {
-    setCount(count + 1);
-  };
-
+function App() {
+  const [state, dispatch] = useReducer(counterReducer1, { count: 0 });
+  console.log('state', state);
+  
 
   return (
     <div className="App">
-      <p>Count: {count}</p>
-      <button onClick={incrementBadhaao}>Increment</button>
+      <p>Count: {state.count}</p> 
+      <button onClick={() => dispatch({type: 'INCREMENT'})}>BADHAA</button>
+      <button onClick={() => dispatch({ type: 'DECREMENT' })}>GHAATA</button>
+      <button onClick={() => dispatch({ type: 'RESET' })}>ORIGINAL</button>
+      
     </div>
-    
   );
 }
 
-
 export default App;
+
+
