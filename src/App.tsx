@@ -1,38 +1,20 @@
-import { useReducer } from 'react';
+import React from 'react';
 import './App.css';
-
-
-const counterReducer1 = (state: any, action: any) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { count: state.count + 1 };
-    case 'DECREMENT':
-      return { count: state.count - 1 };
-    case 'RESET':
-      return { count: 0 };
-    default:
-      return state;
-  }
-}
-
- 
+import useFetch from './hooks/useFetch';
 
 function App() {
-  const [state, dispatch] = useReducer(counterReducer1, { count: 0 });
-  console.log('state', state);
-  
-
+  const {data, loading} = useFetch('https://jsonplaceholder.typicode.com/users')
   return (
     <div className="App">
-      <p>Count: {state.count}</p> 
-      <button onClick={() => dispatch({type: 'INCREMENT'})}>BADHAA</button>
-      <button onClick={() => dispatch({ type: 'DECREMENT' })}>GHAATA</button>
-      <button onClick={() => dispatch({ type: 'RESET' })}>ORIGINAL</button>
-      
+      {loading && <div>Rukk jaa Load rohe de....</div>}
+      <ul>
+        {
+          (data || []).map((user: any) => <li key={user.id}>{user.name}</li>)
+        }
+      </ul>
     </div>
   );
 }
+ 
 
 export default App;
-
-
