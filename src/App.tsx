@@ -1,20 +1,22 @@
-import React from 'react';
-import './App.css';
-import useFetch from './hooks/useFetch';
-
-function App() {
-  const {data, loading} = useFetch('https://jsonplaceholder.typicode.com/users')
-  return (
-    <div className="App">
-      {loading && <div>Rukk jaa Load rohe de....</div>}
-      <ul>
-        {
-          (data || []).map((user: any) => <li key={user.id}>{user.name}</li>)
-        }
-      </ul>
-    </div>
-  );
-}
  
-
-export default App;
+  import React, { useRef } from 'react';
+  import './App.css';
+  import Child from './components/Child';
+  
+  function App() {
+  
+    const childRef = useRef<any>(null);
+    
+  
+    const handleOpenModal = (value: boolean) => {
+      childRef.current?.openModalTrigger(value);
+    }
+    return (
+      <div className="App">
+        <button onClick={() => handleOpenModal(true)}>modal khool</button>
+        <Child ref={childRef} />
+      </div>
+    );
+  }
+  
+  export default App;
